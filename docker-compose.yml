@@ -167,6 +167,8 @@ services:
     build:
       context: ./containers/backup-cron
     hostname: backup-cron
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # we need to use root to mysqldump
     tty: true
     volumes:
       - ./:/home/backup-cron/
